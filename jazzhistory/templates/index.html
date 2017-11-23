@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html lang="en-us">
+
+    <head>
+        <title>The Jazz History Website</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'main.css' %}">
+        <link rel="stylesheet" href="{% static 'blockScroll.css' %}">
+    </head>
+
+    <body class="blackbackground">
+        <div class="wrapper flex-container">
+
+            <header class="title">
+                <div class="title__text">
+                    <h1>JAZZ<br/><span>history</span></h1>
+                </div>
+            </header>
+            <aside class="timeline">
+
+                <h4 class="timeline__title">Jazz Timeline</h4>
+                <div class="vertical">
+                    <hr class="timestamp year1850" />
+                    <div class="ragtime music" href="#">
+                        <div class="circle"></div>
+                        <div class="timeline__link hide">RAGTIME</div>
+                    </div>
+                    <div class="bebop music">
+                        <div class="circle"></div>
+                        <div class="timeline__link hide">BEBOP</div>
+                    </div>
+                    <div class="fusion music">
+                        <div class="circle"></div>
+                        <div class="timeline__link hide">FUSION</div>
+                    </div>
+                    <hr class="timestamp year1950" />
+                    <hr class="timestamp year2000" />
+                </div>
+            </aside>
+            <section class="content" id="main-wrap">
+
+                <article class="history" id="history-first">
+                    <h3 class="history__title">Ragtime</h3>
+                    <p>The abolition of slavery in 1865 led to new opportunities
+                     for the education of freed African Americans.
+                     Although strict segregation limited employment opportunities
+                     for most blacks, many were able to find work in entertainment.
+                     Black musicians were able to provide entertainment in dances,
+                     minstrel shows, and in vaudeville, during which time many
+                     marching bands were formed. Black pianists played in bars,
+                     clubs, and brothels, as ragtime developed.
+                    </p>
+                    <img class="history__image"src="https://vignette.wikia.nocookie.net/ffr/images/1/18/ScottJoplin.jpg/revision/latest?cb=20150327081334"/>
+                    <p>Ragtime appeared as sheet music, popularized by African-
+                    American musicians such as the entertainer Ernest Hogan,
+                    whose hit songs appeared in 1895. Two years later, Vess
+                    Ossman recorded a medley of these songs as a banjo solo
+                    known as "Rag Time Medley".
+                    Also in 1897, the white composer William H.
+                    Krell published his "Mississippi Rag" as
+                    the first written piano instrumental ragtime piece, and Tom
+                    Turpin published his "Harlem Rag", the first rag published
+                    by an African-American.</p>
+                    <img class="history__image"src="
+                    http://ragpiano.com/nostalgia/saloon1.jpg"/>
+                </article>
+                <article class="history">
+                    <h3 class="history__title">Ragtime</h3>
+                    <p>The abolition of slavery in 1865 led to new opportunities
+                     for the education of freed African Americans.
+                     Although strict segregation limited employment opportunities
+                     for most blacks, many were able to find work in entertainment.
+                     Black musicians were able to provide entertainment in dances,
+                     minstrel shows, and in vaudeville, during which time many
+                     marching bands were formed. Black pianists played in bars,
+                     clubs, and brothels, as ragtime developed.
+                    </p>
+                    <img class="history__image"src="https://vignette.wikia.nocookie.net/ffr/images/1/18/ScottJoplin.jpg/revision/latest?cb=20150327081334"/>
+                    <p>Ragtime appeared as sheet music, popularized by African-
+                    American musicians such as the entertainer Ernest Hogan,
+                    whose hit songs appeared in 1895. Two years later, Vess
+                    Ossman recorded a medley of these songs as a banjo solo
+                    known as "Rag Time Medley".
+                    Also in 1897, the white composer William H.
+                    Krell published his "Mississippi Rag" as
+                    the first written piano instrumental ragtime piece, and Tom
+                    Turpin published his "Harlem Rag", the first rag published
+                    by an African-American.</p>
+                    <img class="history__image"src="
+                    http://ragpiano.com/nostalgia/saloon1.jpg"/>
+
+                    <div class="spotify">
+                        <iframe src="https://open.spotify.com/embed?uri=spotify:user:davibortolotti:playlist:7fzBHffVyyPILeTYvw76Hx"
+                         width="100%" height="500" frameborder="0" allowtransparency="true" view="coverart"></iframe>
+                    </div>
+                </article>
+
+
+            </section>
+
+        </div>
+
+    </body>
+
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script>
+        $(document).ready(function() {
+            $(".circle").hover(function(){
+                $(this).toggleClass("circle-hover");
+                $(this).siblings(".timeline__link").toggleClass("hide");
+            });
+        });
+        var index = 0;
+        var lastScrollTop = 0;
+        var active = 0
+
+        if (active = 0) {
+            $(window).scroll(function(event){
+                console.log('scroll active!')
+                var st = $(this).scrollTop(); // sets current scrollTop
+
+                if (st > lastScrollTop) { // if scrolling down
+                    if (($('.history').eq(index).offset().top - $(window).scrollTop()) < 0) {
+                        console.log('threshold');
+                        active = 1
+                        if ($('.history').eq(index+1).height() !== undefined) {
+                            $('html,body').animate({
+                                scrollTop: $(".history").eq(index+1).offset().top
+                            },'slow', function() {
+                                index = 1;
+                                active = 0;
+                                console.log('done');
+                            });
+                        }
+                    }
+                } else if (st < lastScrollTop) { // else scrolling up
+                    if (($('.history').eq(index).offset().top - $(window).scrollTop()) > 0) { // if scrolltop of page is bigger less than 200
+                        active = 1;
+                        if (index > 0) {
+                            $('html,body').animate({
+                                scrollTop: $(".history").eq(index - 1).offset().top
+                            },'slow', function() {
+                                index--;
+                                active = 0;
+                                console.log('done');
+                            });
+                        }
+                    }
+                }
+                lastScrollTop = st; // sets last scrolltop
+            });
+        }
+
+
+        // $(document).scroll(function() {
+        //
+        //     if ($('.history').eq(index).scrollTop() >= ($('.history').eq(index).height() - $('.history').eq(index).height())) {
+        //         if ($('.history').eq(index+1).height() !== undefined) {
+        //             if ($('.history').eq(index).height() + $('.history').eq(index).offset().top <= $(window).scrollTop() + $(window).height() - 300) {
+        //
+        //                 $('html,body').animate({
+        //                     scrollTop: $(".history").eq(index+1).offset().top
+        //                 },'slow');
+        //                 index++;
+        //             }
+        //         }
+        //     }
+        //
+        //     else if ($('.history').eq(index).scrollTop() <= 200) {
+        //         if (index > 0) {
+        //             $('html,body').animate({
+        //                 scrollTop: $(".history").eq(index - 1).offset().top
+        //             },'slow');
+        //             index--;
+        //         } else {
+        //             console.log("ihu");
+        //         }
+        //
+        //     }
+        // });
+
+    </script>
+</html>

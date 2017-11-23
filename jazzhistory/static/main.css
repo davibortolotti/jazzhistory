@@ -1,0 +1,173 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Slab:100,400|Patrick+Hand+SC|Poiret+One|Playfair+Display:400,700");
+
+.blackbackground {
+    background-color: black;
+}
+
+
+.wrapper {
+    color: white;
+    font-family: Lucida, sans-serif;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.title {
+    width: 100%;
+    height: 300px;
+    background-image: url('http://www.gazetadopovo.com.br/ra/mega/Pub/GP/p4/2016/05/25/CadernoG/Imagens/Cortadas/MilesJazzThe-PlazaTwo-Page-SpreadAlternate1495C308-kHmD-U20299988729sy-1024x576@GP-Web.jpg');
+    background-size: cover;
+    background-position: center bottom;
+}
+
+.title__text {
+    height: 100%;
+    background-color: rgba(0,0,0,.4);
+}
+
+.title h1 {
+    padding: 60px 0;
+    color: #F9B233;
+    font-size: 80px;
+    font-weight: 700;
+    font-family: 'Poiret One';
+    margin: 0;
+}
+
+.title span {
+    position: relative;
+    font-family: 'Patrick Hand SC';
+    font-size: 64px;
+    bottom: 30px;
+}
+
+.content {
+    width: 80%;
+}
+
+.history {
+    margin-bottom: 400px;
+}
+
+.history p {
+    text-align: left;
+    text-indent: 30px;
+    padding: 20px;
+    font-family: 'Noto sans', sans-serif;
+}
+
+.history__title {
+    color: #F9B233;
+    text-align: center;
+    font-family: 'Roboto Slab';
+    font-size: 60px;
+}
+
+.history__image {
+    display: block;
+    margin: auto;
+}
+
+.spotify {
+    padding: 80px;
+}
+
+.music {
+    color: black;
+}
+
+.timeline {
+    position: sticky;
+    top: 0;
+    width: 20%;
+    height: 100%;
+}
+
+.timeline__title {
+    color: #F9B233;
+    font-family: 'Roboto Slab';
+    font-weight: 400;
+}
+
+.vertical {
+    height: 800px;
+    width: 0;
+    border: 1px solid #F9B233;
+    margin: auto;
+}
+
+.circle {
+    width: 15px;
+    height: 15px;
+    position: relative;
+    left: -10px;
+    border: 2px solid #F9B233;
+    border-radius: 80%;
+    background-color: black;
+}
+
+.circle-hover {
+    background-color: #F9B233;
+}
+
+.ragtime {
+    position: relative;
+}
+
+.bebop {
+    position: relative;
+    top: 400px;
+}
+
+.fusion {
+    position: relative;
+    top: 700px;
+}
+
+.timeline__link {
+    position: absolute;
+    padding-top: 10px;
+    bottom: -10px;
+    left: 20px;
+    background-color: #F9B233;
+    text-decoration: none;
+    height: 30px;
+    width: 100px;
+    border-radius: 10px;
+    font-family: 'Roboto Slab';
+    font-weight: 400;
+    transition: left 2s;
+}
+
+.hide {
+    height: 0;
+    opacity: 0;
+    display: none;
+}
+
+
+.timestamp {
+    position: relative;
+    height: 0px;
+    width: 11px;
+    border: 1px solid #F9B233;
+    left: -7px;
+}
+
+.year1850 {
+    top: -10px;
+}
+
+.year1950 {
+    top: 400px;
+}
+
+.year2000 {
+    top: 706px;
+}
