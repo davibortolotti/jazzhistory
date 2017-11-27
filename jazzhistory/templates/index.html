@@ -25,7 +25,7 @@
                 <div class="vertical">
                     <hr class="timestamp year1850" />
                     <div class="ragtime music" href="#">
-                        <div class="circle"></div>
+                        <div class="circle" id="ragtime"></div>
                         <div class="timeline__link hide">RAGTIME</div>
                     </div>
                     <div class="bebop music">
@@ -42,7 +42,7 @@
             </aside>
             <section class="content" id="main-wrap">
 
-                <article class="history" id="history-first">
+                <article class="history" id="ragtimeArt">
                     <h3 class="history__title">Ragtime</h3>
                     <p>The abolition of slavery in 1865 led to new opportunities
                      for the education of freed African Americans.
@@ -113,46 +113,56 @@
                 $(this).siblings(".timeline__link").toggleClass("hide");
             });
         });
-        var index = 0;
-        var lastScrollTop = 0;
-        var active = 0
 
-        if (active = 0) {
-            $(window).scroll(function(event){
-                console.log('scroll active!')
-                var st = $(this).scrollTop(); // sets current scrollTop
-
-                if (st > lastScrollTop) { // if scrolling down
-                    if (($('.history').eq(index).offset().top - $(window).scrollTop()) < 0) {
-                        console.log('threshold');
-                        active = 1
-                        if ($('.history').eq(index+1).height() !== undefined) {
-                            $('html,body').animate({
-                                scrollTop: $(".history").eq(index+1).offset().top
-                            },'slow', function() {
-                                index = 1;
-                                active = 0;
-                                console.log('done');
-                            });
-                        }
-                    }
-                } else if (st < lastScrollTop) { // else scrolling up
-                    if (($('.history').eq(index).offset().top - $(window).scrollTop()) > 0) { // if scrolltop of page is bigger less than 200
-                        active = 1;
-                        if (index > 0) {
-                            $('html,body').animate({
-                                scrollTop: $(".history").eq(index - 1).offset().top
-                            },'slow', function() {
-                                index--;
-                                active = 0;
-                                console.log('done');
-                            });
-                        }
-                    }
-                }
-                lastScrollTop = st; // sets last scrolltop
-            });
+        function scrollto() {
+          $('.circle').click(function() {
+            console.log('scroll to the area ' + ("#" + this.id + "Art"  ));
+            articleid = "#" + this.id + "Art"
+            $('html,body').animate({
+              scrollTop: $(articleid).offset().top
+            }, 'slow');
+          });
         }
+
+
+        $(document).ready( scrollto() )
+
+        // if (active = 0) {
+        //     $(window).scroll(function(event){
+        //         console.log('scroll active!')
+        //         var st = $(this).scrollTop(); // sets current scrollTop
+        //
+        //         if (st > lastScrollTop) { // if scrolling down
+        //             if (($('.history').eq(index).offset().top - $(window).scrollTop()) < 0) {
+        //                 console.log('threshold');
+        //                 active = 1
+        //                 if ($('.history').eq(index+1).height() !== undefined) {
+        //                     $('html,body').animate({
+        //                         scrollTop: $(".history").eq(index+1).offset().top
+        //                     },'slow', function() {
+        //                         index = 1;
+        //                         active = 0;
+        //                         console.log('done');
+        //                     });
+        //                 }
+        //             }
+        //         } else if (st < lastScrollTop) { // else scrolling up
+        //             if (($('.history').eq(index).offset().top - $(window).scrollTop()) > 0) { // if scrolltop of page is bigger less than 200
+        //                 active = 1;
+        //                 if (index > 0) {
+        //                     $('html,body').animate({
+        //                         scrollTop: $(".history").eq(index - 1).offset().top
+        //                     },'slow', function() {
+        //                         index--;
+        //                         active = 0;
+        //                         console.log('done');
+        //                     });
+        //                 }
+        //             }
+        //         }
+        //         lastScrollTop = st; // sets last scrolltop
+        //     });
+        // }
 
 
         // $(document).scroll(function() {
